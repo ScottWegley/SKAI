@@ -1,14 +1,18 @@
-import { Client, Message } from "discord.js";
+import { ActionRowBuilder, Client, Message } from "discord.js";
 import { makeError, makeWarning, makeLog, makeHeading, makeSuccess } from "../utils/ColorfulConsole";
 
 /** Parses the message and directs it to the proper channel, creating one if one does not already exists. */
-export default(msg: Message): void => {
+export default(msg: Message, contacts: any, msgChannels: any, gcChannels: any): void => {
     let sender = msg.embeds[0].author?.name.replace("Message from"," ").trim();
     let content = msg.embeds[0].title;
     let recipients = msg.embeds[0].fields[0].value;
-    let isGroupchat = recipients.indexOf('+') == recipients.lastIndexOf('+');
+    let isGroupchat = recipients.indexOf('+') != recipients.lastIndexOf('+');
     makeLog(`Sender is: ${sender}`);
     makeLog(`Title is: ${content}`);
     makeLog(`Recipients are: ${recipients}`);
     makeLog(`Groupchat value: ${isGroupchat}`);
+
+    if(contacts[`${sender}`] == undefined){ /* This number doesn't have a contact.*/
+        makeLog(`${sender} is not in our contacts.`);
+    }
 }
