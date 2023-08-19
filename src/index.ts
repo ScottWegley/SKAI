@@ -1,13 +1,10 @@
 import { Client } from "discord.js";
-import 'dotenv/config';
-import startup from "./events/startup";
+import startDiscord from "./modules/startDiscord";
+import { makeError, makeWarning, makeLog, makeHeading, makeSuccess } from "./utils/ColorfulConsole";
 
+makeHeading("Loading SKAI");
 
-const client = new Client({
-    intents: []
-});
+/*TODO: Fetch Settings Function */
 
-console.log("SKAI is starting up.");
-startup(client);
-
-client.login(process.env.DISCORD_TOKEN);
+/** Start the various modules of SKAI. */
+startDiscord();
