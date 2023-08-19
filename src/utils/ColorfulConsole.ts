@@ -1,4 +1,4 @@
-import { ConsoleCodes, Foreground, Background, Effects } from "./ConsoleCodes.js";
+import { ConsoleCodes, Foreground, Background, Effects } from "./ConsoleCodes";
 
 type MessageType = '[!ERROR!]' | '[WARNING]' | '[LOGGING]' | '[HEADING]' | '[SUCCESS]';
 
