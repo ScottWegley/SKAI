@@ -10,6 +10,6 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "start": "ts-node src\\index.ts"
+    "watchdog": "npx nodemon ./src/index.ts"
   }
 }
