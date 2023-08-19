@@ -1,9 +1,11 @@
 import { Client, Message } from "discord.js";
 import { makeError, makeWarning, makeLog, makeHeading, makeSuccess } from "../utils/ColorfulConsole";
 import 'dotenv/config';
-import receiveText from "src/modules/receiveText";
+import receiveText from "../modules/receiveText";
 
 export default (client: Client): void => {
+    //Load contacts on this line.
+    //Load other text related settings on this line.
     client.on('messageCreate', (msg) => {
         determineMsgRoutine(msg);
     });
@@ -11,7 +13,7 @@ export default (client: Client): void => {
 
 async function determineMsgRoutine(msg: Message): Promise<void> {
     /* If the message is in the text dump channel & the message is from the iPhone Webhook, activate the text receiving routine. */
-    if(msg.channelId == process.env.DISCORD_TEXT_DUMP_CHANNEL_ID && msg.author.id == process.env.SCOTTS_IPHONE_WEBHOOK_ID){
+    if(msg.channelId == process.env.DISCORD_TEXT_DUMP_CHANNEL_ID && msg.author.id == process.env.SCOTTS_IPHONE_USER_ID){
         return receiveText(msg);
     }
 }
