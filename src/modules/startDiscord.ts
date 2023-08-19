@@ -1,7 +1,7 @@
 import { ActivityType, Client } from "discord.js";
 import 'dotenv/config';
 import { makeError, makeWarning, makeLog, makeHeading, makeSuccess } from "../utils/ColorfulConsole";
-import ready from "../events/discord/ready";
+import ready from "../events/ready";
 
 
 const DiscordBot = new Client({
