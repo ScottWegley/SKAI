@@ -2,6 +2,7 @@ import { ActivityType, Client } from "discord.js";
 import 'dotenv/config';
 import { makeError, makeWarning, makeLog, makeHeading, makeSuccess } from "../utils/ColorfulConsole";
 import ready from "../events/ready";
+import messageCreate from "../events/messageCreate";
 
 
 const DiscordBot = new Client({
@@ -26,5 +27,6 @@ export default (): void => {
 
     /* Register discord events. */
     ready(DiscordBot);
+    messageCreate(DiscordBot);
 }
 
